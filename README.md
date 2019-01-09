@@ -1,2 +1,2 @@
-# ReCiter-Identity-Model
-ReCiter-Identity-Model
+# ReCiter-Dynamodb-Model
+ReCiter-Dynamodb-Model
