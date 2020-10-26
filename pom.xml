@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.cornell.weill.reciter</groupId>
   <artifactId>reciter-dynamodb-model</artifactId>
-  <version>2.0.5-SNAPSHOT</version>
+  <version>2.0.5</version>
   <name>ReCiter-Dynamodb-Model</name>
   <description>A set of classes representing a Dynamodb Model</description>
   <url>https://github.com/wcmc-its/ReCiter-Dynamodb-Model</url>
@@ -33,7 +33,7 @@
 		<connection>scm:git:git://github.com/wcmc-its/ReCiter-Dynamodb-Model.git</connection>
 		<developerConnection>scm:git:git@github.com:wcmc-its/ReCiter-Dynamodb-Model.git</developerConnection>
 		<url>https://github.com/wcmc-its/ReCiter-Dynamodb-Model</url>
-		<tag>2.0.1-SNAPSHOT</tag>
+		<tag>reciter-dynamodb-model-2.0.5</tag>
 	</scm>
     
     <distributionManagement>
