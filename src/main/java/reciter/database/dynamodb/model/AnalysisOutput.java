@@ -27,7 +27,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import reciter.engine.analysis.ReCiterArticleFeature;
 import reciter.engine.analysis.ReCiterFeature;
 
 @Data
