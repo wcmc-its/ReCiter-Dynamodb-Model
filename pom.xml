@@ -33,7 +33,7 @@
 		<connection>scm:git:git://github.com/wcmc-its/ReCiter-Dynamodb-Model.git</connection>
 		<developerConnection>scm:git:git@github.com:wcmc-its/ReCiter-Dynamodb-Model.git</developerConnection>
 		<url>https://github.com/wcmc-its/ReCiter-Dynamodb-Model</url>
-		<tag>2.0.7</tag>
+		<tag>2.0.8</tag>
 	</scm>
     
     <distributionManagement>
