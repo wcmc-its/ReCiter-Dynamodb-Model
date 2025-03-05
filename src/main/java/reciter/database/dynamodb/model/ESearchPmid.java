@@ -1,39 +1,47 @@
 package reciter.database.dynamodb.model;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
+import java.util.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
-import java.util.Date;
-import java.util.List;
-
+@DynamoDbBean
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@DynamoDBDocument
+@AllArgsConstructor
 public class ESearchPmid {
-    private List<Long> pmids;
-    private String retrievalStrategyName;
-    private Date retrievalDate;
-    @DynamoDBTyped(DynamoDBAttributeType.S)
-    private RetrievalRefreshFlag lookupType;
+	private List<Long> pmids;
+	private String retrievalStrategyName;
+	private Date retrievalDate;
+	private RetrievalRefreshFlag lookupType;
 
+	@DynamoDbAttribute("pmids")
+	public List<Long> getPmids() {
+		return pmids;
+	}
 
-    /**
-     * User would be able to select one of the refresh flag for retrieval.
-     * If "ALL_PUBLICATIONS" - re-import all publications from all sources
-     * If "ONLY_NEWLY_ADDED_PUBLICATIONS" - add publications with a date range. Ideally last time it was run to future.
-     * If "FALSE" (default) - retrieve existing records from eSearchResults
-     * 
-     * @author Sarbajit Dutta (szd2013) 
-     */
-    public enum RetrievalRefreshFlag {
-        ALL_PUBLICATIONS,
-        ONLY_NEWLY_ADDED_PUBLICATIONS,
-        FALSE
-    }
+	@DynamoDbAttribute("retrievalStrategyName")
+	public String getRetrievalStrategyName() {
+		return retrievalStrategyName;
+	}
+
+	@DynamoDbAttribute("retrievalDate")
+	public Date getRetrievalDate() {
+		return retrievalDate;
+	}
+
+	@DynamoDbAttribute("lookupType")
+	@DynamoDbConvertedBy(RetrievalRefreshFlagConverter.class)
+	public RetrievalRefreshFlag getLookupType() {
+		return lookupType;
+	}
+
+	public enum RetrievalRefreshFlag {
+		ALL_PUBLICATIONS, ONLY_NEWLY_ADDED_PUBLICATIONS, FALSE
+	}
 }

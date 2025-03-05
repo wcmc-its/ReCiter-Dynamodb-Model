@@ -2,29 +2,43 @@ package reciter.database.dynamodb.model;
 
 import java.util.List;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
-@DynamoDBTable(tableName = "GoldStandard")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@DynamoDBDocument
+@DynamoDbBean
 public class GoldStandard {
-	
-	@DynamoDBHashKey(attributeName = "uid")
-    private String uid;
-	@DynamoDBAttribute(attributeName = "knownpmids")
-    private List<Long> knownPmids;
-	@DynamoDBAttribute(attributeName = "rejectedpmids")
-    private List<Long> rejectedPmids;
-	@DynamoDBAttribute(attributeName = "auditLog")
+
+	private String uid;
+	private List<Long> knownPmids;
+	private List<Long> rejectedPmids;
 	private List<GoldStandardAuditLog> auditLog;
-	
+
+	@DynamoDbPartitionKey
+	@DynamoDbAttribute("uid")
+	public String getUid() {
+		return uid;
+	}
+
+	@DynamoDbAttribute("knownpmids")
+	public List<Long> getKnownPmids() {
+		return knownPmids;
+	}
+
+	@DynamoDbAttribute("rejectedpmids")
+	public List<Long> getRejectedPmids() {
+		return rejectedPmids;
+	}
+
+	@DynamoDbAttribute("auditLog")
+	public List<GoldStandardAuditLog> getAuditLog() {
+		return auditLog;
+	}
+
 }

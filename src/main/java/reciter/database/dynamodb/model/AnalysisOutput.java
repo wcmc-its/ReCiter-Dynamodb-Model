@@ -18,28 +18,42 @@
  *******************************************************************************/
 package reciter.database.dynamodb.model;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import reciter.engine.analysis.ReCiterFeature;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@DynamoDBTable(tableName = "Analysis")
+@DynamoDbBean
 public class AnalysisOutput {
-	
-	@DynamoDBHashKey(attributeName = "uid")
+
 	private String uid;
-	@DynamoDBTyped(DynamoDBAttributeType.BOOL)
-	@DynamoDBAttribute(attributeName = "s3StorageFlag")
 	private boolean isUsingS3;
-	@DynamoDBAttribute(attributeName = "reCiterFeature")
 	private ReCiterFeature reCiterFeature;
+
+	@DynamoDbPartitionKey
+	@DynamoDbAttribute("uid")
+	public String getUid() {
+		return uid;
+	}
+
+	@DynamoDbAttribute("s3StorageFlag")
+	@JsonProperty("s3StorageFlag")
+	public boolean isUsingS3() {
+		return isUsingS3;
+	}
+
+	@DynamoDbAttribute("reCiterFeature")
+	@JsonProperty("reCiterFeature")
+	public ReCiterFeature getReCiterFeature() {
+		return reCiterFeature;
+	}
+
 }

@@ -1,24 +1,33 @@
 package reciter.database.dynamodb.model;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import java.util.List;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
 @Data
-@DynamoDBTable(tableName = "InstitutionAfid")
 @AllArgsConstructor
 @NoArgsConstructor
-@DynamoDBDocument
+@DynamoDbBean
 public class InstitutionAfid {
-	
-	@DynamoDBHashKey(attributeName = "institution")
-    private String institution;
-	@DynamoDBAttribute(attributeName = "afids")
-    private List<String> afids;
+
+	private String institution;
+	private List<String> afids;
+
+	@DynamoDbPartitionKey
+	@DynamoDbAttribute("institution")
+	public String getInstitution() {
+		return institution;
+	}
+
+	@DynamoDbAttribute("afids")
+	public List<String> getAfids() {
+		return afids;
+	}
+
 }

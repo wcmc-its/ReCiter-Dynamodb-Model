@@ -1,20 +1,30 @@
 package reciter.database.dynamodb.model;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
-@DynamoDBTable(tableName = "MeshTerm")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@DynamoDbBean
 public class MeshTerm {
-	
-	@DynamoDBHashKey(attributeName = "mesh")
-    private String mesh;
-	@DynamoDBAttribute(attributeName = "count")
-    private long count;
+
+	private String mesh;
+	private long count;
+
+	@DynamoDbPartitionKey
+	@DynamoDbAttribute("mesh")
+	public String getMesh() {
+		return mesh;
+	}
+
+	@DynamoDbAttribute("count")
+	public long getCount() {
+		return count;
+	}
+
 }

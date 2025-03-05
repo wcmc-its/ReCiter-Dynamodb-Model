@@ -1,22 +1,30 @@
 package reciter.database.dynamodb.model;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
 @Data
-@DynamoDBTable(tableName = "Identity")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @AllArgsConstructor
 @NoArgsConstructor
+@DynamoDbBean
 public class Identity {
-	@DynamoDBHashKey(attributeName = "uid")
-    private String uid;
-	@DynamoDBAttribute(attributeName = "identity")
+		
+	private String uid;
     private reciter.model.identity.Identity identity;
+    
+    
+    @DynamoDbPartitionKey
+    @DynamoDbAttribute("uid")
+    public String getUid() {
+        return uid;
+    }
+
+    
 }

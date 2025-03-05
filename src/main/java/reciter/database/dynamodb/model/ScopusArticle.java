@@ -1,24 +1,33 @@
 package reciter.database.dynamodb.model;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-
 import lombok.Data;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
 @Data
-@DynamoDBTable(tableName = "ScopusArticle")
+@DynamoDbBean
 public class ScopusArticle {
-	
-	@DynamoDBHashKey(attributeName = "id")
-    private String id;
-	 @DynamoDBAttribute(attributeName = "scopusarticle")
-    private reciter.model.scopus.ScopusArticle scopusArticle;
 
-    public ScopusArticle() {}
+	private String id;
+	private reciter.model.scopus.ScopusArticle scopusArticle;
 
-    public ScopusArticle(String id, reciter.model.scopus.ScopusArticle scopusArticle) {
-        this.id = id;
-        this.scopusArticle = scopusArticle;
-    }
+	@DynamoDbPartitionKey
+	@DynamoDbAttribute("id")
+	public String getId() {
+		return id;
+	}
+
+	@DynamoDbAttribute("scopusarticle")
+	public reciter.model.scopus.ScopusArticle getScopusArticle() {
+		return scopusArticle;
+	}
+
+	public ScopusArticle() {
+	}
+
+	public ScopusArticle(String id, reciter.model.scopus.ScopusArticle scopusArticle) {
+		this.id = id;
+		this.scopusArticle = scopusArticle;
+	}
 }
