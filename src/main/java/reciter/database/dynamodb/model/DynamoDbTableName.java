@@ -4,7 +4,7 @@
 //import java.lang.annotation.RetentionPolicy;
 //
 ///**
-// * Custom annotation to define the DynamoDB table name for a class.
+// * Custom annotation to define the DynamoDB table name for a class. testing 
 // */
 //@Retention(RetentionPolicy.RUNTIME)
 //public @interface DynamoDbTableName {
