@@ -1,37 +1,50 @@
 package reciter.database.dynamodb.model;
 
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
-import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
-import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
 @Data
+@DynamoDBTable(tableName = "ApplicationUser")
 @AllArgsConstructor
 @NoArgsConstructor
-@DynamoDbBean
 public class ApplicationUser {
+	
+	@DynamoDBHashKey(attributeName = "id")
+    private String id;
+	@DynamoDBAttribute(attributeName = "username")
+    private String username;
+	@DynamoDBAttribute(attributeName = "password")
+    private String password;
+/*
+    
+    public String getId() {
+        return id;
+    }
 
-	private String id;
-	private String username;
-	private String password;
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	@DynamoDbPartitionKey
-	@DynamoDbAttribute("id")
-	public String getId() {
-		return id;
-	}
+    @DynamoDBAttribute(attributeName = "username")
+    public String getUsername() {
+        return username;
+    }
 
-	@DynamoDbAttribute("username")
-	public String getUsername() {
-		return username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	@DynamoDbAttribute("password")
-	public String getPassword() {
-		return password;
-	}
+    @DynamoDBAttribute(attributeName = "password")
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }*/
 }
