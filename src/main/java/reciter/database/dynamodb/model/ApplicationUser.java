@@ -21,6 +21,7 @@ public class ApplicationUser {
 	@DynamoDBAttribute(attributeName = "password")
     private String password;
 /*
+  
     
     public String getId() {
         return id;
