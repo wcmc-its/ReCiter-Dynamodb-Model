@@ -25,31 +25,25 @@ public class ScienceMetrixDepartmentCategory {
 	private String scienceMetrixJournalSubfield;
 	@CsvBindByPosition(position = 4)
 	private int scienceMetrixJournalSubfieldId;
-
 	@DynamoDbPartitionKey
 	@DynamoDbAttribute("pk")
 	public int getPk() {
 		return pk;
 	}
-
 	@DynamoDbAttribute("logOddsRatio")
 	public double getLogOddsRatio() {
 		return logOddsRatio;
 	}
-
 	@DynamoDbAttribute("primaryDepartment")
 	public String getPrimaryDepartment() {
 		return primaryDepartment;
 	}
-
 	@DynamoDbAttribute("scienceMetrixJournalSubfield")
 	public String getScienceMetrixJournalSubfield() {
 		return scienceMetrixJournalSubfield;
 	}
-
 	@DynamoDbAttribute("scienceMetrixJournalSubfieldId")
 	public int getScienceMetrixJournalSubfieldId() {
 		return scienceMetrixJournalSubfieldId;
 	}
-
 }

@@ -23,15 +23,12 @@ public class ApplicationUser {
 	public String getId() {
 		return id;
 	}
-
 	@DynamoDbAttribute("username")
 	public String getUsername() {
 		return username;
 	}
-
 	@DynamoDbAttribute("password")
 	public String getPassword() {
 		return password;
 	}
-
 }

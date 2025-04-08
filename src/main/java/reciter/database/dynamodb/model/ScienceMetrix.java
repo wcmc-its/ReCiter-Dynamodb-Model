@@ -38,42 +38,34 @@ public class ScienceMetrix {
 	public Long getSmsid() {
 		return smsid;
 	}
-
 	@DynamoDbAttribute("eissn")
 	@DynamoDbSecondaryPartitionKey(indexNames = "eissn-index")
 	public String getEissn() {
 		return eissn;
 	}
-
 	@DynamoDbAttribute("issn")
 	@DynamoDbSecondaryPartitionKey(indexNames = "issn-index")
 	public String getIssn() {
 		return issn;
 	}
-
 	@DynamoDbAttribute("publicationName")
 	public String getPublicationName() {
 		return publicationName;
 	}
-
 	@DynamoDbAttribute("scienceMatrixSubfieldId")
 	public String getScienceMatrixSubfieldId() {
 		return scienceMatrixSubfieldId;
 	}
-
 	@DynamoDbAttribute("scienceMetrixDomain")
 	public String getScienceMetrixDomain() {
 		return scienceMetrixDomain;
 	}
-
 	@DynamoDbAttribute("scienceMetrixField")
 	public String getScienceMetrixField() {
 		return scienceMetrixField;
 	}
-
 	@DynamoDbAttribute("scienceMetrixSubfield")
 	public String getScienceMetrixSubfield() {
 		return scienceMetrixSubfield;
 	}
-
 }

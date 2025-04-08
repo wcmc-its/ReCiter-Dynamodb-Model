@@ -17,15 +17,12 @@ public class ScopusArticle {
 	public String getId() {
 		return id;
 	}
-
 	@DynamoDbAttribute("scopusarticle")
 	public reciter.model.scopus.ScopusArticle getScopusArticle() {
 		return scopusArticle;
 	}
-
 	public ScopusArticle() {
 	}
-
 	public ScopusArticle(String id, reciter.model.scopus.ScopusArticle scopusArticle) {
 		this.id = id;
 		this.scopusArticle = scopusArticle;

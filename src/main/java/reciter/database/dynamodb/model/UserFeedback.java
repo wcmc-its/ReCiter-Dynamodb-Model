@@ -1,6 +1,6 @@
 package reciter.database.dynamodb.model;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,7 +22,7 @@ public class UserFeedback {
 	private String uid;
 	private List<Double> acceptedPmids;
 	private List<Double> rejectedPmids;
-	private Date feedbackDate;
+	private Instant  feedbackDate;
 
 	@DynamoDbPartitionKey
 	@DynamoDbAttribute("uid")
@@ -30,23 +30,19 @@ public class UserFeedback {
 	public String getUid() {
 		return uid;
 	}
-
 	@DynamoDbAttribute("acceptedPmids")
 	@JsonProperty("acceptedPmids")
 	public List<Double> getAcceptedPmids() {
 		return acceptedPmids;
 	}
-
 	@DynamoDbAttribute("rejectedPmids")
 	@JsonProperty("rejectedPmids")
 	public List<Double> getRejectedPmids() {
 		return rejectedPmids;
 	}
-
 	@DynamoDbAttribute("feedbackDate")
 	@JsonProperty("feedbackDate")
-	public Date getFeedbackDate() {
+	public Instant  getFeedbackDate() {
 		return feedbackDate;
 	}
-
 }

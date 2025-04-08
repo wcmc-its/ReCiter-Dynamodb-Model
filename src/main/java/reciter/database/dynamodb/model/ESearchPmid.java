@@ -1,6 +1,6 @@
 package reciter.database.dynamodb.model;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -10,37 +10,34 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttri
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 
-@DynamoDbBean
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamoDbBean
 public class ESearchPmid {
 	private List<Long> pmids;
 	private String retrievalStrategyName;
-	private Date retrievalDate;
+	private Instant  retrievalDate;
 	private RetrievalRefreshFlag lookupType;
 
 	@DynamoDbAttribute("pmids")
 	public List<Long> getPmids() {
 		return pmids;
 	}
-
 	@DynamoDbAttribute("retrievalStrategyName")
 	public String getRetrievalStrategyName() {
 		return retrievalStrategyName;
 	}
-
 	@DynamoDbAttribute("retrievalDate")
-	public Date getRetrievalDate() {
+	public Instant  getRetrievalDate() {
 		return retrievalDate;
 	}
-
 	@DynamoDbAttribute("lookupType")
 	@DynamoDbConvertedBy(RetrievalRefreshFlagConverter.class)
 	public RetrievalRefreshFlag getLookupType() {
 		return lookupType;
 	}
-
 	public enum RetrievalRefreshFlag {
 		ALL_PUBLICATIONS, ONLY_NEWLY_ADDED_PUBLICATIONS, FALSE
 	}

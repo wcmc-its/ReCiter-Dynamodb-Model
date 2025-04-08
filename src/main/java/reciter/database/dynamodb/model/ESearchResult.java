@@ -1,6 +1,6 @@
 package reciter.database.dynamodb.model;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,9 +19,10 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbParti
 public class ESearchResult {
 
 	private String uid;
-	private Date retrievalDate;
+	private Instant  retrievalDate;
 	private List<ESearchPmid> eSearchPmids;
 	private QueryType queryType;
+	
 
 	@DynamoDbPartitionKey
 	@DynamoDbAttribute("uid")
@@ -29,23 +30,18 @@ public class ESearchResult {
 	public String getUid() {
 		return uid;
 	}
-
 	@DynamoDbAttribute("retrievalDate")
-	@JsonProperty("retrievalDate")
-	public Date getRetrievalDate() {
+	public Instant  getRetrievalDate() {
 		return retrievalDate;
 	}
-
 	@DynamoDbAttribute("esearchpmids")
 	@JsonProperty("esearchpmids")
 	public List<ESearchPmid> getESearchPmids() {
 		return eSearchPmids;
 	}
-
 	@DynamoDbAttribute("queryType")
 	@JsonProperty("queryType")
 	public QueryType getQueryType() {
 		return queryType;
 	}
-
 }

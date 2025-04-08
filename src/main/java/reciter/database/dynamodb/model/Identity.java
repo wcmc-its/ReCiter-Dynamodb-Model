@@ -19,12 +19,9 @@ public class Identity {
 	private String uid;
     private reciter.model.identity.Identity identity;
     
-    
     @DynamoDbPartitionKey
     @DynamoDbAttribute("uid")
     public String getUid() {
         return uid;
     }
-
-    
 }

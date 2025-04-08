@@ -2,7 +2,6 @@ package reciter.database.dynamodb.model;
 
 import java.util.List;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,16 +17,13 @@ public class InstitutionAfid {
 
 	private String institution;
 	private List<String> afids;
-
 	@DynamoDbPartitionKey
 	@DynamoDbAttribute("institution")
 	public String getInstitution() {
 		return institution;
 	}
-
 	@DynamoDbAttribute("afids")
 	public List<String> getAfids() {
 		return afids;
 	}
-
 }

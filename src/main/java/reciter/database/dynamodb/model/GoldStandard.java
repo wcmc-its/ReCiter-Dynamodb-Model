@@ -25,20 +25,16 @@ public class GoldStandard {
 	public String getUid() {
 		return uid;
 	}
-
 	@DynamoDbAttribute("knownpmids")
 	public List<Long> getKnownPmids() {
 		return knownPmids;
 	}
-
 	@DynamoDbAttribute("rejectedpmids")
 	public List<Long> getRejectedPmids() {
 		return rejectedPmids;
 	}
-
 	@DynamoDbAttribute("auditLog")
 	public List<GoldStandardAuditLog> getAuditLog() {
 		return auditLog;
 	}
-
 }

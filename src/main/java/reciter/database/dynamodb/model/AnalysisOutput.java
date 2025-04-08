@@ -43,17 +43,14 @@ public class AnalysisOutput {
 	public String getUid() {
 		return uid;
 	}
-
 	@DynamoDbAttribute("s3StorageFlag")
 	@JsonProperty("s3StorageFlag")
 	public boolean isUsingS3() {
 		return isUsingS3;
 	}
-
 	@DynamoDbAttribute("reCiterFeature")
 	@JsonProperty("reCiterFeature")
 	public ReCiterFeature getReCiterFeature() {
 		return reCiterFeature;
 	}
-
 }

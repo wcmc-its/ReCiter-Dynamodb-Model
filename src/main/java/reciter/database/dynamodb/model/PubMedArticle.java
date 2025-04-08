@@ -19,16 +19,13 @@ public class PubMedArticle {
 		this.pmid = pmid;
 		this.pubMedArticle = pubMedArticle;
 	}
-
 	@DynamoDbPartitionKey
 	@DynamoDbAttribute("pmid")
 	public Long getPmid() {
 		return pmid;
 	}
-
 	@DynamoDbAttribute("pubmedarticle")
 	public reciter.model.pubmed.PubMedArticle getPubMedArticle() {
 		return pubMedArticle;
 	}
-
 }
