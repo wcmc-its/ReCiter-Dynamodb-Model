@@ -6,6 +6,7 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import reciter.model.typeconverter.DateAttributeConverter;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
@@ -18,7 +19,7 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConve
 public class ESearchPmid {
 	private List<Long> pmids;
 	private String retrievalStrategyName;
-	private Instant  retrievalDate;
+	private Instant   retrievalDate;
 	private RetrievalRefreshFlag lookupType;
 
 	@DynamoDbAttribute("pmids")
@@ -29,8 +30,9 @@ public class ESearchPmid {
 	public String getRetrievalStrategyName() {
 		return retrievalStrategyName;
 	}
+	@DynamoDbConvertedBy(DateAttributeConverter.class)
 	@DynamoDbAttribute("retrievalDate")
-	public Instant  getRetrievalDate() {
+	public Instant   getRetrievalDate() {
 		return retrievalDate;
 	}
 	@DynamoDbAttribute("lookupType")

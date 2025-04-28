@@ -8,8 +8,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import reciter.model.typeconverter.DateAttributeConverter;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
 @Data
@@ -31,6 +33,7 @@ public class ESearchResult {
 		return uid;
 	}
 	@DynamoDbAttribute("retrievalDate")
+	@DynamoDbConvertedBy(DateAttributeConverter.class)
 	public Instant  getRetrievalDate() {
 		return retrievalDate;
 	}
