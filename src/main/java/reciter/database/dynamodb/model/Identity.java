@@ -24,4 +24,9 @@ public class Identity {
     public String getUid() {
         return uid;
     }
+    @DynamoDbAttribute("identity")
+    public reciter.model.identity.Identity getIdentity() {
+		return identity;
+	}
+    
 }
