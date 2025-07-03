@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.cornell.weill.reciter</groupId>
   <artifactId>reciter-dynamodb-model</artifactId>
-  <version>2.0.9-SNAPSHOT</version>
+  <version>3.0.0</version>
   <name>ReCiter-Dynamodb-Model</name>
   <description>A set of classes representing a Dynamodb Model</description>
   <url>https://github.com/wcmc-its/ReCiter-Dynamodb-Model</url>
