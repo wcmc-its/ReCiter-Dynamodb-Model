@@ -18,16 +18,14 @@ public class RetrievalRefreshFlagConverter implements AttributeConverter<ESearch
 	        return ESearchPmid.RetrievalRefreshFlag.valueOf(attributeValue.s());
 	    }
 
-	@Override
-	public EnhancedType<RetrievalRefreshFlag> type() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	 @Override
+	    public EnhancedType<RetrievalRefreshFlag> type() {
+	        return EnhancedType.of(RetrievalRefreshFlag.class);
+	    }
 
-	@Override
-	public AttributeValueType attributeValueType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	    @Override
+	    public AttributeValueType attributeValueType() {
+	        return AttributeValueType.S;
+	    }
 
 }
