@@ -21,6 +21,13 @@
 
 	<developers>
 		<developer>
+			<name>Mahender Reddy Jangari</name>
+			<email>mrj4001@med.cornell.edu</email>
+			<organization>Weill Cornell Medicine ITS</organization>
+			<organizationUrl>https://github.com/wcmc-its</organizationUrl>
+			<timezone>GMT+5.5</timezone>
+		</developer>
+		<developer>
 			<name>Sarbajit Dutta</name>
 			<email>szd2013@med.cornell.edu</email>
 			<organization>Weill Cornell Medicine ITS</organization>
@@ -33,7 +40,7 @@
 		<connection>scm:git:git://github.com/wcmc-its/ReCiter-Dynamodb-Model.git</connection>
 		<developerConnection>scm:git:git@github.com:wcmc-its/ReCiter-Dynamodb-Model.git</developerConnection>
 		<url>https://github.com/wcmc-its/ReCiter-Dynamodb-Model</url>
-		<tag>2.0.8</tag>
+		<tag>reciter-dynamodb-model-3.0.0</tag>
 	</scm>
     
     <distributionManagement>
@@ -49,9 +56,9 @@
 	
     <properties>
         <version.maven-release-plugin>2.5.3</version.maven-release-plugin>
-        <version.maven-gpg-plugin>1.6</version.maven-gpg-plugin>
-        <version.maven-source-plugin>3.0.1</version.maven-source-plugin>
-		<version.maven-javadoc-plugin>2.10.4</version.maven-javadoc-plugin>
+        <version.maven-gpg-plugin>3.1.0</version.maven-gpg-plugin>
+        <version.maven-source-plugin>3.2.1</version.maven-source-plugin>
+		<version.maven-javadoc-plugin>3.6.3</version.maven-javadoc-plugin>
 		<version.maven-scm-provider-gitexe>1.9.5</version.maven-scm-provider-gitexe>
     	<!-- Generic properties -->
 		<java.version>17</java.version>
@@ -61,6 +68,56 @@
 	</properties>
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
+		<plugins>
+			<!-- Apply the plugin directly here -->
+			<plugin>
+			  <groupId>org.sonatype.central</groupId>
+			  <artifactId>central-publishing-maven-plugin</artifactId>
+			  <version>0.8.0</version>
+			  <extensions>true</extensions>
+			  <configuration>
+				<publishingServerId>central</publishingServerId>
+			  </configuration>
+			</plugin>
+			<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${version.maven-source-plugin}</version>
+					<executions>
+					<execution>
+					<id>attach-sources</id>
+					<phase>package</phase>
+					<goals>
+					<goal>jar</goal>
+					</goals>
+					</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${version.maven-javadoc-plugin}</version>
+					<configuration>
+						<failOnError>false</failOnError>
+						<additionalJOptions>
+						  <additionalJOption>-Xdoclint:none</additionalJOption>
+						</additionalJOptions>
+						<encoding>UTF-8</encoding>
+						<links>
+							<link>https://docs.oracle.com/en/java/javase/17/docs/api/</link>
+						</links>
+					</configuration>
+					<executions>
+						<execution>
+							<id>attach-javadoc</id>
+							<phase>package</phase> 
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+		 </plugins>  
         <pluginManagement>
 	        <plugins>
 	            <plugin>
@@ -145,12 +202,12 @@
 					</configuration>
 				</plugin>
 	            <plugin>
-	                <groupId>io.swagger</groupId>
-	                <artifactId>swagger-codegen-maven-plugin</artifactId>
-	                <version>3.0.0-rc1</version>
+	                <groupId>org.openapitools</groupId>
+	                <artifactId>openapi-generator-maven-plugin</artifactId>
+	                <version>7.3.0</version>
 	                <executions>
 	                    <execution>
-	                        <id>generate-swagger-javaclient</id>
+	                        <id>generate-spring-java-client</id>
 	                        <phase>generate-sources</phase>
 	                        <goals>
 	                            <goal>generate</goal>
