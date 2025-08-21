@@ -2,7 +2,9 @@ package reciter.database.dynamodb.model;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperFieldModel.DynamoDBAttributeType;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTyped;
 
 import lombok.Data;
 
@@ -12,6 +14,9 @@ public class PubMedArticle {
 	
 	@DynamoDBHashKey(attributeName = "pmid")
     private Long pmid;
+	@DynamoDBTyped(DynamoDBAttributeType.BOOL)
+	@DynamoDBAttribute(attributeName = "s3StorageFlag")
+	private boolean isUsingS3;
 	@DynamoDBAttribute(attributeName = "pubmedarticle")
     private reciter.model.pubmed.PubMedArticle pubMedArticle;
 
@@ -22,3 +27,4 @@ public class PubMedArticle {
         this.pubMedArticle = pubMedArticle;
     }
 }
+
