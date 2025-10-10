@@ -201,29 +201,6 @@
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 					</configuration>
 				</plugin>
-	            <plugin>
-	                <groupId>org.openapitools</groupId>
-	                <artifactId>openapi-generator-maven-plugin</artifactId>
-	                <version>7.3.0</version>
-	                <executions>
-	                    <execution>
-	                        <id>generate-spring-java-client</id>
-	                        <phase>generate-sources</phase>
-	                        <goals>
-	                            <goal>generate</goal>
-	                        </goals>
-	                        <configuration>
-	                            <inputSpec>${yaml.file}</inputSpec>
-	                            <configOptions>
-	                                <sourceFolder>${generated-sources-java-path}</sourceFolder>
-	                            </configOptions>
-	                            <output>${generated-sources-path}</output>
-	                            <language>java</language>
-	                            <modelPackage>reciter.model.pubmed</modelPackage>
-	                        </configuration>
-	                    </execution>
-	                </executions>
-	            </plugin>
 	        </plugins>
         </pluginManagement>
     </build>

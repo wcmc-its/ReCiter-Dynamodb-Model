@@ -19,6 +19,8 @@ public class PubMedArticle {
      */
 	private Long pmid;
 	
+	private boolean isUsingS3;
+	
 	 /**
      * The full PubMed article details.
      * This field contains metadata such as title, authors, journal, MedlineCitationDate ,pubmodel etc.
@@ -52,6 +54,16 @@ public class PubMedArticle {
 	public Long getPmid() {
 		return pmid;
 	}
+	
+	/**
+	 * Checks if is using S 3.
+	 *
+	 * @return true, if is using S 3
+	 */
+	@DynamoDbAttribute("s3StorageFlag")
+    public boolean isUsingS3() {
+        return isUsingS3;
+    }
 	
 	/**
 	 * Gets the pub med article.
