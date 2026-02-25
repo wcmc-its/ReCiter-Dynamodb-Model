@@ -27,7 +27,7 @@ public class AdminOrcid {
 	private String personIdentifier;
 
 	/**
-	 * ORCID of the person. <i>e.g. <b>0000-0000-0000-0000</b></i>
+	 * ORCID of the person.
 	 */
 	@DynamoDBAttribute(attributeName = "orcid")
 	private String orcid;
