@@ -42,4 +42,6 @@ public class AnalysisOutput {
 	private boolean isUsingS3;
 	@DynamoDBAttribute(attributeName = "reCiterFeature")
 	private ReCiterFeature reCiterFeature;
+	@DynamoDBAttribute(attributeName = "schemaVersion")
+	private String schemaVersion;
 }
