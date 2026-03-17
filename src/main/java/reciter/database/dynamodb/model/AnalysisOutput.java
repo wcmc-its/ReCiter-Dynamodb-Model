@@ -33,7 +33,7 @@ import reciter.engine.analysis.ReCiterFeature;
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamoDBTable(tableName = "Analysis")
-public class AnalysisOutput {
+public class AnalysisOutput implements VersionedItem {
 	
 	@DynamoDBHashKey(attributeName = "uid")
 	private String uid;
