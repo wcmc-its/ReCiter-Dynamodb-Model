@@ -33,7 +33,7 @@ import reciter.engine.analysis.ReCiterFeature;
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamoDBTable(tableName = "Analysis")
-public class AnalysisOutput implements VersionedItem {
+public class AnalysisOutput implements VersionedItem{
 	
 	@DynamoDBHashKey(attributeName = "uid")
 	private String uid;
@@ -43,5 +43,5 @@ public class AnalysisOutput implements VersionedItem {
 	@DynamoDBAttribute(attributeName = "reCiterFeature")
 	private ReCiterFeature reCiterFeature;
 	@DynamoDBAttribute(attributeName = "schemaVersion")
-	private String schemaVersion;
+	private int schemaVersion;
 }
