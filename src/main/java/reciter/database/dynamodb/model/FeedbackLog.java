@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
-import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
 
@@ -41,7 +40,6 @@ public class FeedbackLog {
 		return articleId;
 	}
 
-//	@DynamoDbConvertedBy(FeedBackTypeConverter.class)
 	@DynamoDbAttribute("feedback")
 	public String getFeedback() {
 		return feedback;
@@ -66,9 +64,5 @@ public class FeedbackLog {
 	public long getModifyTimestamp() {
 		return modifyTimestamp;
 	}
-	
-	 enum Feedback {
-	        ACCEPTED, REJECTED, PENDING
-	    }
 
 }
