@@ -37,7 +37,7 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbParti
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamoDbBean
-public class AnalysisOutput {
+public class AnalysisOutput implements VersionedItem{
 
 	 /**
      * The unique identifier of the person.
@@ -53,6 +53,14 @@ public class AnalysisOutput {
      * The result of the feature generation step.
      */
 	private ReCiterFeature reCiterFeature;
+	
+	
+	/**
+    * The version of the data schema used for this record.
+    * Enables schema evolution and backward compatibility when the
+    * structure of stored data changes over time.
+    */
+	private int schemaVersion; 
 
 	 /**
      * Gets the user identifier.
@@ -86,4 +94,17 @@ public class AnalysisOutput {
 	public ReCiterFeature getReCiterFeature() {
 		return reCiterFeature;
 	}
+
+	
+	/**
+     * Gets the schema version associated with this record.
+     *
+     * @return the schema version used to interpret and manage the stored data.
+     */
+	@DynamoDbAttribute("schemaVersion")
+	@JsonProperty("schemaVersion")
+	public int getSchemaVersion() {
+		return schemaVersion;
+	}
+	
 }
