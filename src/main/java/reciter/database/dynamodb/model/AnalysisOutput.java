@@ -78,8 +78,8 @@ public class AnalysisOutput implements VersionedItem{
      *
      * @return true if stored in S3, false if stored in DynamoDB.
      */
-	@DynamoDbAttribute("s3StorageFlag")
-	@JsonProperty("s3StorageFlag")
+	@DynamoDbAttribute("usingS3")
+	@JsonProperty("usingS3")
 	public boolean isUsingS3() {
 		return isUsingS3;
 	}
