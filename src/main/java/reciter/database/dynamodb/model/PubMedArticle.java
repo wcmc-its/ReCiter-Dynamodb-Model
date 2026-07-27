@@ -1,5 +1,7 @@
 package reciter.database.dynamodb.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
@@ -19,7 +21,7 @@ public class PubMedArticle {
      */
 	private Long pmid;
 	
-	private boolean isUsingS3;
+	private boolean usingS3;
 	
 	 /**
      * The full PubMed article details.
@@ -56,13 +58,15 @@ public class PubMedArticle {
 	}
 	
 	/**
+	 *
 	 * Checks if is using S 3.
 	 *
 	 * @return true, if is using S 3
 	 */
 	@DynamoDbAttribute("s3StorageFlag")
+	@JsonProperty("s3StorageFlag")
     public boolean isUsingS3() {
-        return isUsingS3;
+        return usingS3;
     }
 	
 	/**

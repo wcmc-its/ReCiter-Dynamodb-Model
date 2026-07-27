@@ -18,6 +18,8 @@
  *******************************************************************************/
 package reciter.database.dynamodb.model;
 
+import java.util.function.ToDoubleFunction;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -48,7 +50,7 @@ public class AnalysisOutput implements VersionedItem{
      * Flag indicating whether the ReCiterFeature data is stored in S3 instead of DynamoDB.
      * Useful for reducing storage costs and avoiding item size limits.
      */
-	private boolean isUsingS3;
+	private boolean usingS3;
 	/**
      * The result of the feature generation step.
      */
@@ -74,6 +76,7 @@ public class AnalysisOutput implements VersionedItem{
 	}
 	
 	/**
+	 * 
      * Indicates whether the output is stored in S3.
      *
      * @return true if stored in S3, false if stored in DynamoDB.
@@ -81,7 +84,7 @@ public class AnalysisOutput implements VersionedItem{
 	@DynamoDbAttribute("s3StorageFlag")
 	@JsonProperty("s3StorageFlag")
 	public boolean isUsingS3() {
-		return isUsingS3;
+		return usingS3;
 	}
 	
 	/**
