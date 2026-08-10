@@ -5,6 +5,7 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import software.amazon.awssdk.enhanced.dynamodb.extensions.annotations.DynamoDbVersionAttribute;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
@@ -32,6 +33,11 @@ public class GoldStandard {
      * Count of rejected publications.
      */
 	private List<Long> rejectedPmids;
+	
+	/**
+     * Optimistic-concurrency version counter for this GoldStandard item.
+     */
+	private Long version;
 	
 	/** The audit log. */
 	private List<GoldStandardAuditLog> auditLog;
@@ -75,5 +81,13 @@ public class GoldStandard {
 	@DynamoDbAttribute("auditLog")
 	public List<GoldStandardAuditLog> getAuditLog() {
 		return auditLog;
+	}
+	
+	/** gets the version number for optimistic concurrency control.
+	 * @return version
+	 */
+	@DynamoDbVersionAttribute
+	public Long getVersion() {
+		return version;
 	}
 }
