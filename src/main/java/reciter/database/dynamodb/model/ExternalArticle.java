@@ -69,6 +69,25 @@ public class ExternalArticle {
     /** Raw source API record as a JSON string, for provenance/debugging. */
     private String rawRecord;
 
+    /** The uid that filed the dispute. Set once by DISPUTE; permanent — never cleared. */
+    private String disputedBy;
+
+    /** ISO-8601 instant, set by DISPUTE. Permanent — never cleared. */
+    private String disputedAt;
+
+    /** Optional free-text note from the disputing faculty member, set by DISPUTE. */
+    private String disputeNote;
+
+    /** The uid that resolved the dispute (RETRACT or RESOLVE). */
+    private String disputeResolvedBy;
+
+    /** ISO-8601 instant, set on RETRACT or RESOLVE. */
+    private String disputeResolvedAt;
+
+    /** RETRACTED | CLEARED — which kind of resolution; distinguishes a faculty member
+     *  undoing their own dispute from a curator adjudicating it closed. */
+    private String disputeResolution;
+
     @DynamoDbPartitionKey
     @DynamoDbAttribute("uid")
     public String getUid() {
