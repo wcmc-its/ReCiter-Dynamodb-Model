@@ -15,6 +15,11 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortK
  * OpenAlex). External articles never enter feature generation, scoring, or
  * Analysis writes; they are appended to feature-generator API output at
  * serialization time when includeExternal=true is requested.
+ *
+ * <p>Prefer the no-arg constructor + setters over the generated all-args
+ * constructor: several fields are adjacent, same-typed Strings (e.g.
+ * {@code disputedBy}/{@code disputeResolvedBy}, {@code addedBy}), so a
+ * positional call gives the compiler nothing to catch a transposed argument.
  */
 
 @Data
