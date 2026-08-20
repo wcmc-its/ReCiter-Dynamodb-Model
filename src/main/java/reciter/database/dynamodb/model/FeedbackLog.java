@@ -28,6 +28,9 @@ public class FeedbackLog {
 	 */
 	private String actorPersonIdentifier;
 
+	/** Optional free-text note attached to the action (e.g. a faculty member's dispute reason). */
+	private String note;
+
 	private String src;
 	private long createTimestamp;
 	private long modifyTimestamp;
@@ -62,6 +65,11 @@ public class FeedbackLog {
 	@DynamoDbAttribute("actorPersonIdentifier")
 	public String getActorPersonIdentifier() {
 		return actorPersonIdentifier;
+	}
+
+	@DynamoDbAttribute("note")
+	public String getNote() {
+		return note;
 	}
 
 	@DynamoDbAttribute("src")
