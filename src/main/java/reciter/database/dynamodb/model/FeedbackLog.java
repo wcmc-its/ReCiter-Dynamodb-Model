@@ -64,7 +64,18 @@ public class FeedbackLog {
 	 * The identifier of the curator who provided or reviewed the feedback.
 	 */
 	private int curatedBy;
-	
+
+	/**
+	 * CWID of the person who performed the action ({@code Person.personIdentifier}
+	 * namespace — curators and faculty alike). Additive and nullable: rows written
+	 * before this field existed carry only the narrower {@link #curatedBy}
+	 * ({@code admin_users.userID}).
+	 */
+	private String actorPersonIdentifier;
+
+	/** Optional free-text note attached to the action (e.g. a faculty member's dispute reason). */
+	private String note;
+
 	/**
 	 * The source system or origin of the feedback.
 	 */
@@ -126,6 +137,17 @@ public class FeedbackLog {
 	public int getCuratedBy() {
 		return curatedBy;
 	}
+	
+	@DynamoDbAttribute("actorPersonIdentifier")
+	public String getActorPersonIdentifier() {
+		return actorPersonIdentifier;
+	}
+
+	@DynamoDbAttribute("note")
+	public String getNote() {
+		return note;
+	}
+
 
 	/**
 	 * Gets the source system or origin of the feedback.
