@@ -107,7 +107,7 @@ public class AnalysisOutput implements VersionedItem{
 	public int getSchemaVersion() {
 		return schemaVersion;
 	}
-	
+
 	/**
      * Sets the schema version associated with this record.
      *
@@ -116,4 +116,5 @@ public class AnalysisOutput implements VersionedItem{
 	public void setSchemaVersion(int schemaVersion) {
 		this.schemaVersion = schemaVersion;
 	}
+
 }
