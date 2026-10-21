@@ -18,8 +18,6 @@
  *******************************************************************************/
 package reciter.database.dynamodb.model;
 
-import java.util.function.ToDoubleFunction;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -109,5 +107,14 @@ public class AnalysisOutput implements VersionedItem{
 	public int getSchemaVersion() {
 		return schemaVersion;
 	}
-	
+
+	/**
+     * Sets the schema version associated with this record.
+     *
+     * @param schemaVersion the schema version to assign to this record.
+     */
+	public void setSchemaVersion(int schemaVersion) {
+		this.schemaVersion = schemaVersion;
+	}
+
 }
