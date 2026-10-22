@@ -18,8 +18,6 @@
  *******************************************************************************/
 package reciter.database.dynamodb.model;
 
-import java.util.function.ToDoubleFunction;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
