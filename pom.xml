@@ -44,22 +44,37 @@
 	</developers>
     
     <scm>
-		<connection>scm:git:git://github.com/wcmc-its/ReCiter-Dynamodb-Model.git</connection>
+		<connection>scm:git:https://github.com/wcmc-its/ReCiter-Dynamodb-Model.git</connection>
 		<developerConnection>scm:git:git@github.com:wcmc-its/ReCiter-Dynamodb-Model.git</developerConnection>
 		<url>https://github.com/wcmc-its/ReCiter-Dynamodb-Model</url>
 		<tag>4.0.0</tag>
 	</scm>
     
-    <properties>
-        <version.maven-release-plugin>3.1.1</version.maven-release-plugin>
-        <version.maven-gpg-plugin>3.2.7</version.maven-gpg-plugin>
-        <version.maven-source-plugin>3.4.0</version.maven-source-plugin>
-		<version.maven-javadoc-plugin>3.11.2</version.maven-javadoc-plugin>
-		<version.maven-scm-provider-gitexe>2.1.0</version.maven-scm-provider-gitexe>
+	<properties>
 		<java.version>21</java.version>
+		<version.spring-boot>4.0.8</version.spring-boot>
+		<version.aws-sdk>2.47.5</version.aws-sdk>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<version.maven-release-plugin>3.3.1</version.maven-release-plugin>
+		<version.maven-gpg-plugin>3.2.8</version.maven-gpg-plugin>
+		<version.maven-source-plugin>3.4.0</version.maven-source-plugin>
+		<version.maven-javadoc-plugin>3.12.0</version.maven-javadoc-plugin>
+		<version.maven-scm-provider-gitexe>2.2.1</version.maven-scm-provider-gitexe>
 	</properties>
+	
+	<repositories>
+		<repository>
+			<id>central-snapshots</id>
+			<url>https://central.sonatype.com/repository/maven-snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 	
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
@@ -68,7 +83,7 @@
 			<plugin>
 			  <groupId>org.sonatype.central</groupId>
 			  <artifactId>central-publishing-maven-plugin</artifactId>
-			  <version>0.8.0</version>
+			  <version>0.12.0</version>
 			  <extensions>true</extensions>
 			  <configuration>
 				<publishingServerId>central</publishingServerId>
@@ -117,17 +132,16 @@
 	        <plugins>
 	            <plugin>
 	                <artifactId>maven-compiler-plugin</artifactId>
-	                <version>3.13.0</version>
+	                <version>3.16.0</version>
 	                <configuration>
 	                    <encoding>UTF-8</encoding>
-						<source>${java.version}</source>
-                    	<target>${java.version}</target>
+						<release>${java.version}</release>
 						<showDeprecation>true</showDeprecation>
 	                </configuration>
 	            </plugin>
 	            <plugin>
 	                <artifactId>maven-deploy-plugin</artifactId>
-	                <version>3.1.3</version>
+	                <version>3.2.0</version>
 	                <executions>
 						<execution>
 							<id>default-deploy</id>
@@ -156,56 +170,23 @@
 						</dependency>
 					</dependencies>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>${version.maven-source-plugin}</version>
-					<executions>
-					<execution>
-					<id>attach-sources</id>
-					<goals>
-					<goal>jar</goal>
-					</goals>
-					</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${version.maven-javadoc-plugin}</version>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
-					<executions>
-						<execution>
-							<id>attach-javadoc</id>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.sonatype.plugins</groupId>
-					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>1.6.7</version>
-					<extensions>true</extensions>
-					<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-					</configuration>
-				</plugin>
 	        </plugins>
         </pluginManagement>
     </build>
     
-    <dependencyManagement>
+   <dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
-				<version>4.0.8</version>
+				<version>${version.spring-boot}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>software.amazon.awssdk</groupId>
+				<artifactId>bom</artifactId>
+				<version>${version.aws-sdk}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -221,7 +202,6 @@
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
-            <version>3.0.2</version>
         </dependency>
         <dependency>
         	<groupId>edu.cornell.weill.reciter</groupId>
@@ -251,12 +231,10 @@
         <dependency>
 			<groupId>software.amazon.awssdk</groupId>
 			<artifactId>dynamodb</artifactId>
-			<version>2.47.5</version>
 		</dependency>
 		<dependency>
 			<groupId>software.amazon.awssdk</groupId>
 			<artifactId>dynamodb-enhanced</artifactId>
-			<version>2.47.5</version>
 		</dependency>
     </dependencies>
     
